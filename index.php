@@ -51,7 +51,7 @@
             <div class="row">
                 <form action="controller/pesquisa_cep.php" method="post">
                     <div class="pesquisa">
-                        <input type="text" class="mt-3" required name="cep" id="cep" maxlength="9" placeholder="Digite o CEP" onkeypress="$(this).mask('00000-000')">
+                        <input type="text" value="<?php if(isset($_GET['value'])) echo $_GET['value']?>" class="mt-3" required name="cep" id="cep" maxlength="9" placeholder="Digite o CEP" onkeypress="$(this).mask('00000-000')">
                         <button type="submit" class="mt-3" id="btnPesquisa"><img src="img/search.png" alt="" srcset=""></button>
                     </div>
                 </form>

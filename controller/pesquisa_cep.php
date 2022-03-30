@@ -11,7 +11,7 @@ if(mysqli_num_rows($resultados) > 0)
 {
     //SE ENCONTRADO NO BD, RETORNA PARA A INDEX E ENCERRA A CONEXÃO
     $linha = mysqli_fetch_assoc($resultados);
-    header('location: ../index.php?q='.$linha['id']);
+    header('location: ../index.php?q='.$linha['id'].'&value='.$cep);
     exit;
 }
 else
@@ -23,7 +23,7 @@ else
     //SE CEP NAO ENCONTRADO, RETORNA ERRO PARA INDEX E ENCERRA CONEXÃO
     if($xml->erro == true)
     {
-        header('Location:../index.php?errorcep');
+        header('Location:../index.php?errorcep&value='.$cep);
         die();
     }
     else
@@ -33,12 +33,12 @@ else
         
         if($conexao->query($inserir) === TRUE)
         {
-            header('Location:../index.php?q='.$xml->cep);
+            header('Location:../index.php?q='.$xml->cep.'&value='.$xml->cep);
             die();
         }
         else
         {
-            header('Location:../index.php?errorinterno');
+            header('Location:../index.php?errorinterno&value='.$xml->cep);
             die();
         }
     }
