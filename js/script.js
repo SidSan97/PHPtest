@@ -8,6 +8,7 @@ function fecharNotificacao2()
     document.getElementById("notification2").style.display = "none";
 }
 
+//VALIDA O CAMPO CEP
 $('#cep').blur(function()
 {
     var cep = $('#cep').val();
@@ -16,6 +17,7 @@ $('#cep').blur(function()
     {
         alert('CEP inválido: ' + cep);
         $('#cep').val('');
+
         document.getElementById("cep").style.borderColor  = "#f00";
         document.getElementById("btnPesquisa").style.borderColor  = "#f00";
     }
