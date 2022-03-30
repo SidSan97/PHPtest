@@ -1,3 +1,7 @@
+<?php
+    include('conexao.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,16 +18,69 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="titulo mt-4">Consulta de CEP</h1>
+        <section class="pesquisa-cep mb-4">
+            <h1 class="titulo mt-4">Consulta de CEP</h1>
 
-        <div class="row">
-            <form action="controller/pesquisa_cep.php" method="post">
-                <div class="pesquisa">
-                    <input type="text" class="mt-3" required name="cep" id="cep" maxlength="9" placeholder="Digite o CEP" onkeypress="$(this).mask('00000-000')">
-                    <button type="submit" class="mt-3"><img src="img/search.png" alt="" srcset=""></i></button>
-                </div>
-            </form>
-        </div>
+            <div class="row">
+                <form action="controller/pesquisa_cep.php" method="post">
+                    <div class="pesquisa">
+                        <input type="text" class="mt-3" required name="cep" id="cep" maxlength="9" placeholder="Digite o CEP" onkeypress="$(this).mask('00000-000')">
+                        <button type="submit" class="mt-3"><img src="img/search.png" alt="" srcset=""></button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="resultado-cep mt-4">
+            <?php 
+                if(isset($_GET['q']))
+                {
+                    $sql = "SELECT * FROM dados_cep WHERE id = $_GET[q] or num_cep = '$_GET[q]'";
+                    $resultados = mysqli_query($conexao, $sql);
+
+                    if(mysqli_num_rows($resultados) > 0)
+                    {
+                        while($linha = mysqli_fetch_assoc($resultados))
+                        {
+                            echo '
+                            <h2 align="center">Resultado da Busca por CEP</h2> <br>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <label for="cep">Cep:</label>
+                                    <input type="text" value="'.$linha["num_cep"].'" class="form-control" id="cep" readonly>
+                                </div>
+                
+                                <div class="col-md-6 mb-2">
+                                    <label for="cidade">Cidade:</label>
+                                    <input type="text" value="'.$linha['cidade'].'" class="form-control" id="cidade" readonly>
+                                </div>
+                            </div>
+                
+                            <div class="row">
+                                <div class="col-md-2 mb-2">
+                                    <label for="uf">UF:</label>
+                                    <input type="text" value="'.$linha['uf'].'" class="form-control" id="uf" readonly>
+                                </div>
+                
+                                <div class="col-md-6 mb-2">
+                                    <label for="rua">Rua:</label>
+                                    <input type="text" value="'.$linha['rua'].'" class="form-control" id="rua" readonly>
+                                </div>
+                
+                                <div class="col-md-4 mb-2">
+                                    <label for="ibge">IBGE:</label>
+                                    <input type="text" value="'.$linha['ibge'].'" class="form-control" id="ibge" readonly>
+                                </div>
+                            </div>';
+                        }
+                    }
+                }
+            ?>
+        </section>
+       
     </div>
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap.min.js"></script>
