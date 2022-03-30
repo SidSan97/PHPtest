@@ -51,3 +51,36 @@ form
     margin-left: -6px;
     cursor: pointer;
 }
+
+.resultado-cep h2
+{
+    align-items: center;
+}
+
+.notification
+{
+    color: white;
+    font-weight: 600;
+    width: 320px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notification button
+{
+    border: none;
+    border-radius: 30px;
+    height: 30px;
+    width: 30px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.error
+{
+    background-color: #f14d54;
+}
