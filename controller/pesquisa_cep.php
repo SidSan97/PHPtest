@@ -38,8 +38,8 @@ else
         }
         else
         {
-            //header('Location:../index.php?errorinterno');
-            die($conexao->error);
+            header('Location:../index.php?errorinterno');
+            die();
         }
     }
 }
