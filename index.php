@@ -86,7 +86,7 @@
                                 </div>
 
                                 <div class="col-md-4 mb-2">
-                                    <label for="cidade">Cidade:</label>
+                                    <label for="cidade">Bairro:</label>
                                     <input type="text" value="'.$linha['bairro'].'" class="form-control" id="cidade" readonly>
                                 </div>
                             </div>
