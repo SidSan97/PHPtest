@@ -75,14 +75,19 @@
                             <h2 align="center">Resultado da Busca por CEP</h2> <br>
 
                             <div class="row">
-                                <div class="col-md-6 mb-2">
+                                <div class="col-md-3 mb-2">
                                     <label for="cep">Cep:</label>
                                     <input type="text" value="'.$linha["num_cep"].'" class="form-control" id="cep" readonly>
                                 </div>
                 
-                                <div class="col-md-6 mb-2">
+                                <div class="col-md-5 mb-2">
                                     <label for="cidade">Cidade:</label>
                                     <input type="text" value="'.$linha['cidade'].'" class="form-control" id="cidade" readonly>
+                                </div>
+
+                                <div class="col-md-4 mb-2">
+                                    <label for="cidade">Cidade:</label>
+                                    <input type="text" value="'.$linha['bairro'].'" class="form-control" id="cidade" readonly>
                                 </div>
                             </div>
                 
